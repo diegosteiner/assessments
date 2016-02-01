@@ -1,5 +1,5 @@
 class Table
-  attr_accessor :name, :player_estimates
+  attr_accessor :name, :topic, :player_estimates
 
   @@tables = Hash.new do |hash, name|
     hash[name] = Table.new(name)
@@ -9,8 +9,9 @@ class Table
     @@tables[name]
   end
 
-  def initialize(name, player_estimates={})
+  def initialize(name, topic="", player_estimates={})
     @name = name
+    @topic = topic
     @player_estimates = player_estimates
   end
 
@@ -53,6 +54,7 @@ class Table
   def to_h
     {
         name: name,
+        topic: topic,
         player_estimates: player_estimates,
         player_count: player_estimates.count,
         average: average
