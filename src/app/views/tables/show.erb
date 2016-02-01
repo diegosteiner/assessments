@@ -7,7 +7,7 @@
 </dl>
 <span id="average"><%= @table.average %></span>
 
-<%= form_tag("#", method: :post) do %>
+<%= form_tag("#", id: "estimates", method: :post) do %>
     <%= text_field_tag(:player) %>
     <%= number_field_tag(:estimate) %>
     <%= submit_tag("Estimate!") %>

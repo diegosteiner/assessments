@@ -20,12 +20,12 @@ App.table = App.cable.subscriptions.create { channel: "TableChannel", table_id: 
     @perform('reset')
 
   install: ->
-    $('form').submit =>
+    $('form#estimates').submit =>
       player = $('input[name="player"]').val()
       estimation = $('input[name="estimate"]').val()
       @estimate(player, estimation)
       return false
-    $('form button[type="reset"]').click =>
+    $('form#estimates button[type="reset"]').click =>
       @reset()
       false
 
