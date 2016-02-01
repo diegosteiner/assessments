@@ -28,6 +28,9 @@ App.table = App.cable.subscriptions.create { channel: "TableChannel", table_id: 
 
     update_estimates(data['player_estimates'])
 
+  update_topic: (topic) ->
+    @perform('update_topic', topic: topic)
+
   estimate: (player, estimation) ->
     @perform('estimate', player: player, estimation: estimation)
 
@@ -35,6 +38,10 @@ App.table = App.cable.subscriptions.create { channel: "TableChannel", table_id: 
     @perform('reset')
 
   install: ->
+    $('form#topic').submit =>
+      topic = $('input[name="topic"]').val()
+      @update_topic(topic)
+      return false
     $('form#estimates').submit =>
       player = $('input[name="player"]').val()
       estimation = $('input[name="estimate"]').val()

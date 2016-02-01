@@ -5,6 +5,11 @@ class TableChannel < ApplicationCable::Channel
     stream_from table.to_s
   end
 
+  def update_topic(data)
+    table.topic = data['topic']
+    ActionCable.server.broadcast table, table.to_h
+  end
+
   def estimate(data)
     table.estimate(data['player'], data['estimation'])
     ActionCable.server.broadcast table, table.to_h
