@@ -10,12 +10,22 @@
     <p>
       {{post.text}}
     </p>
-    <div ng-if="chat.comments.length">
-      Comments
+    <div class="padding-vertical" ng-if="post.comments.length">
+      <strong>Comments:</strong>
       <ul>
-        <li ng-repeat="comment in chat.comments">{{comment.text}}</li>
+        <li ng-repeat="comment in post.comments">{{comment.user}}: {{comment.text}}</li>
       </ul>
     </div>
-    <div ng-if="!chat.comments.length">This post has no comments.</div>
+    <div class="padding-vertical" ng-if="!post.comments.length"><hr>This post has no comments.</div>
+    <form ng-submit="addComment()">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="newComment.text" placeholder="Add a comment">
+        </label>
+        <button type="submit" ng-disabled="!newComment.text" class="button button-block button-positive">
+          Submit
+        </button>
+      </div>
+    </form>
   </ion-content>
 </ion-view>

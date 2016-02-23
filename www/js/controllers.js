@@ -29,6 +29,13 @@ angular.module('starter.controllers', [])
 
 .controller('PostDetailCtrl', function($scope, $stateParams, Posts) {
   $scope.post = Posts.get($stateParams.postId);
+  $scope.newComment = {};
+
+  $scope.addComment = function() {
+    $scope.newComment.user = 'User 1';
+    Posts.addComment($scope.post, $scope.newComment);
+    $scope.newComment = {};
+  };
 })
 
 .controller('SettingsCtrl', function($scope) {
