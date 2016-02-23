@@ -1,0 +1,14 @@
+<ion-view view-title="New post">
+  <ion-content class="padding">
+    <form ng-submit="addPost()">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="newPost.text" placeholder="Message">
+        </label>
+        <button type="submit" ng-disabled="!newPost.text" class="button button-block button-positive">
+          Submit
+        </button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
